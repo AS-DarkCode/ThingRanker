@@ -8,8 +8,8 @@ if (!isset($_POST['name']) || !isset($_POST['id'])) {
 }
 
 //Initialize name and id
-$name = $_POST['name'];
-$id = $_POST['id'];
+$name = mysqli_real_escape_string($conn, $_POST['name']);
+$id = mysqli_real_escape_string($conn, $_POST['id']);
 
 try {
     $stmt = $pdo->prepare("INSERT INTO $id (name) VALUES (:name)");
